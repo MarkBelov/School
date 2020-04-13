@@ -87,7 +87,7 @@ int main()
     cout << "Size: " << a.size() << endl;
     cout << "Back: " << a.back() << endl;
     a.pop();
-    cout << "Front: " << a.front();
+    cout << "Front: " << a.front() << endl;
     a.pop();
     cout << "pop" << endl;
     a.pop(); // size of qu now = 0 -> (Error)
