@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -12,12 +14,16 @@ vector< vector<int> > vec;
 
 int main()
 {
-    bool zn = false;
-    cin >> nn;
+    ifstream file("C:\\Users\\Пользователь\\Desktop\\test.txt");
+    string str;
+    file >> nn;
     vec.assign(3, vector<int>(nn));
+    bool zn = false;
 
     for (int i = 0; i < nn; ++i) {
-        cin >> vec[0][i] >> vec[1][i];
+        file >> vec[0][i];
+        file >> vec[1][i];
+        //cout << i << endl;
         vec[2][i] = 0;
     }
 
@@ -38,6 +44,7 @@ int sor()
 {
     int m, l;
     for (int i = 1; i < nn; i++) {
+            //cout << i << endl;
         if (vec[1][i - 1] > vec[1][i]) {
             m = vec[1][i - 1];
             vec[1][i - 1] = vec[1][i];
@@ -57,6 +64,7 @@ int prov()
 {
     int i, v;
     ++k;
+    //cout << k << endl;
     for (i = 0; i < nn; ++i) {
         if (vec[2][i] == 0) {
             v = vec[1][i];
@@ -78,3 +86,4 @@ int prov()
     }
     return false;
 }
+
