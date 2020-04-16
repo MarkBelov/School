@@ -1,0 +1,80 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int prov();
+int sor();
+
+int nn;
+int k = -1;
+vector< vector<int> > vec;
+
+int main()
+{
+    bool zn = false;
+    cin >> nn;
+    vec.assign(3, vector<int>(nn));
+
+    for (int i = 0; i < nn; ++i) {
+        cin >> vec[0][i] >> vec[1][i];
+        vec[2][i] = 0;
+    }
+
+    sor();
+
+    for (int i = 0; i < nn; ++i) {
+        //cout << vec[0][i] << " " << vec[1][i] << endl;
+    }
+
+    while (!zn) {
+       zn = prov();
+    }
+    cout << k;
+    return 0;
+}
+
+int sor()
+{
+    int m, l;
+    for (int i = 1; i < nn; i++) {
+        if (vec[1][i - 1] > vec[1][i]) {
+            m = vec[1][i - 1];
+            vec[1][i - 1] = vec[1][i];
+            vec[1][i] = m;
+
+            l = vec[0][i - 1];
+            vec[0][i - 1] = vec[0][i];
+            vec[0][i] = l;
+
+            i = 0;
+        }
+    }
+}
+
+
+int prov()
+{
+    int i, v;
+    ++k;
+    for (i = 0; i < nn; ++i) {
+        if (vec[2][i] == 0) {
+            v = vec[1][i];
+            vec[2][i] = 1;
+            //cout << "I:" << i << " V:" << v << endl;
+            break;
+        }
+        if (i == nn - 1)
+            return true;
+    }
+    while (i < (nn - 1)) {
+        //cout << vec[2][i + 1] << " " << vec[0][i + 1] << " ";
+        if ((vec[2][i + 1] == 0) && (vec[0][i + 1] >= v)) {
+                //cout << "I + 1: " << i + 1 << "; v:" << vec[1][i + 1] << endl;
+            vec[2][i + 1] = 1;
+            v = vec[1][i + 1];
+        }
+        ++i;
+    }
+    return false;
+}
