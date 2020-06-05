@@ -1,1 +1,101 @@
-refvwf
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class SetOfStacks
+{
+public:
+    SetOfStacks()
+    {
+        VEC.push_back(vec);
+    }
+
+    void Check()
+    {
+        cout << endl << "Check: " << endl;
+        for (int i = 0; i < VEC.size(); ++i) {
+            if (VEC[i].size() > 0) {
+                cout << "Stack_" << i + 1 << ": ";
+                for (int v = 0; v < VEC[i].size(); ++v) {
+                    cout << VEC[i][v] << " ";
+                }
+            }
+            cout << endl;
+        }
+        cout << "_____________________" << endl << endl;
+    }
+
+    void push(int a)
+    {
+        cout << "push(" << a << ") " << endl;
+        if (VEC[n].size() == m) {
+            VEC.push_back(vec);
+            ++n;
+        }
+        VEC[n].push_back(a);
+        Check();
+    }
+
+    void pop()
+    {
+        cout << "pop() " << endl;
+        while(VEC[n].size() == 0)
+            --n;
+        VEC[n].pop_back();
+        Check();
+    }
+
+    void popAt(int index)
+    {
+        cout << "popAt(" << index << ") " << endl;
+        if (VEC[index].size() > 0) {
+        VEC[index].pop_back();
+        Check();
+        } else {
+        cout << endl << "Stack_" << index << " is empty" << endl << "_____________________" << endl << endl;
+        }
+    }
+
+private:
+    vector< vector<int> > VEC;
+    vector< int > vec;
+    int m = 5;  //пороговое значение стека
+    int n = 0;
+};
+
+
+int main ()
+{
+    SetOfStacks mass;
+    mass.push(1);
+    mass.push(2);
+    mass.push(3);
+    mass.pop();
+    mass.push(4);
+    mass.push(5);
+    mass.push(6);
+    mass.push(7);
+    mass.pop();
+    mass.pop();
+    mass.push(8);
+    mass.pop();
+    mass.popAt(0);
+    mass.popAt(1);
+    mass.push(9);
+    mass.push(10);
+    mass.popAt(0);
+    mass.push(11);
+    mass.push(12);
+    mass.push(13);
+    mass.push(14);
+    mass.push(15);
+    mass.push(16);
+    mass.pop();
+    mass.push(17);
+    mass.push(18);
+    mass.popAt(1);
+    mass.popAt(0);
+    mass.push(19);
+}
+
