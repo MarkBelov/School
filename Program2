@@ -1,0 +1,44 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int a = 1, Amax = -1, Bmax = -1;
+ifstream file1("C:\\Users\\st063181\\Desktop\\123.txt");
+ifstream file2("C:\\Users\\st063181\\Desktop\\1234.txt");
+
+int funkc(int numb) {
+    while(a != 0) {
+            if (numb == 1) {
+                file1 >> a;
+            } else {
+                file2 >> a;
+            }
+        if (a == 0)
+            break;
+        if ((a % 7 == 0) && (a % 49 != 0)) {
+            if (a > Amax)
+                Amax = a;
+        }
+        if (a % 7 != 0) {
+            if (a > Bmax)
+                Bmax = a;
+        }
+    }
+    if ((Amax == -1) || (Bmax == -1)) {
+        cout << 1 << " ";
+    } else {
+        cout << Amax * Bmax << " ";
+    }
+    a = 1;
+    Amax = -1;
+    Bmax = -1;
+}
+
+int main()
+{
+    funkc(1);
+
+    funkc(2);
+    return 0;
+}
